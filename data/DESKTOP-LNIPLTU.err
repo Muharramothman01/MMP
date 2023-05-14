@@ -1,0 +1,2 @@
+2023-02-25T21:25:48.044118Z 0 [System] [MY-013169] [Server] c:\wamp64\bin\mysql\mysql8.0.18\bin\mysqld.exe (mysqld 8.0.18) initializing of server in progress as process 22936
+2023-02-25T21:25:53.714019Z 5 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
