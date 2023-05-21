@@ -20,9 +20,10 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent m-auto">
+                                <a href="{{ route('cart.store',['id' => $product->id]) }}" >
+                                    <button class="btn btn-outline-dark mt-auto" type="submit">Add to Cart</button>
+                                </a>
                             </div>
                         </div>
                     </div>

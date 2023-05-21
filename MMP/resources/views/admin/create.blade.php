@@ -39,12 +39,13 @@
                 <input type="number" name="price" class="form-control" placeholder="Price">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                 <strong>Image Path:</strong>
-                 <input type="text" name="img" class="form-control" placeholder="Image Path">
-            </div>
+                <div class="form-group">
+                    <strong>Image :</strong>
+                    <input type="file" name="img" class="form-control" placeholder="Image">
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
+                Category :
                 <div class="form-group">
                         <select class="form-select" aria-label="Default select example" name="category">
                             <option selected>Select the type</option>
@@ -56,9 +57,23 @@
                         </select>
                 </div>
             </div>
-        </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    Company :
+                    <div class="form-group">
+                        <select class="form-select" aria-label="Default select example" name="category_name">
+                            <option selected>Select the type</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Xiamoi">Xiaomi</option>
+                            <option value="Oppo">Oppo</option>
+                            <option value="Pixel">Pixel</option>
+                            <option value="Samsung">Samsung</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
         </div>
         </div>
 

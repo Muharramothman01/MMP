@@ -5,6 +5,7 @@ namespace App\Http\Controllers\UserController;
 use App\Http\Controllers\Controller;
 use App\Model\product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -13,8 +14,14 @@ class ProductController extends Controller
         $this->middleware('auth');
     }
     public function showProducts(){
-        $products=product::select('name','price','img')->orderBy('id','desc')->get();
-        return view('products',compact('products'));
+        $userID = auth()->id();
+        $NewCart = null;
+        $ishere = DB::table('carts')->where('user_Id',$userID)->exists();
+        if(!$ishere){
+            $NewCart = DB::insert('insert into carts (user_Id) values (?)',[$userID]);
+        }
+        $products = Product::select('id','name','price','img')->orderBy('id','desc')->get();
+        return view('products',compact('products','NewCart'));
     }
 
     public function searchProduct(Request $request){

@@ -34,6 +34,13 @@ Route::group(['prefix'=>'/'],function (){
     Route::get('Search','UserController\ProductController@searchProduct')->name('search');
 });
 
-
 Route::resource('admin', 'AdminController');
 
+Route::group(['prefix'=>'/cart'],function(){
+    Route::get('', [App\Http\Controllers\UserController\CartController::class, 'index'])->name('cart.index');
+    Route::get('store/{id}', [App\Http\Controllers\UserController\CartController::class, 'store'])->name('cart.store');
+    Route::get('/{id}', [App\Http\Controllers\UserController\CartController::class, 'destroy'])->name('cart.destroy');
+});
+
+Route::get('/payment','UserController\PaymentController@index')->name('payment.index');
+Route::post('/payment/credit','UserController\PaymentController@credit')->name('payment.credit');

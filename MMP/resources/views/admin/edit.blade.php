@@ -37,8 +37,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Image Path:</strong>
-                    <input type="text" name="img" class="form-control" placeholder="Image Path" value="{{$product->img}}">
+                    <strong>Image </strong>
+                    <input type="file" name="img" class="form-control" placeholder="Image">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -49,12 +49,18 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Category:</strong>
+                    <strong>Category : </strong>
                     <input type="text" name="category" value="{{ $product->category }}" class="form-control" placeholder="Category">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Company : </strong>
+                    <input type="text" name="category_name" value="{{ $product->category_name }}" class="form-control" placeholder="Category">
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
             </div>
         </div>
 

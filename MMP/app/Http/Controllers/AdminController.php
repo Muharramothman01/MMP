@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Model\Categorie;
 use App\Model\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -14,6 +15,9 @@ class AdminController extends Controller
 
     public function index() {
         $products =  Product::all();
+        if(Auth::user()->admin==0){
+            return abort(404);
+        }
         return view('admin.index')->with('products', $products);
     }
 
@@ -31,15 +35,13 @@ class AdminController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-
-        $data = $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-        ]);
-
-        product::create($data);
-
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->category = $request->category;
+        $product->category_name = $request->category_name;
+        $product->img = $request->img;
+        $product->save();
         return redirect()->route('admin.index')->with('success', 'Product created successfully.');
     }
 
@@ -52,16 +54,13 @@ class AdminController extends Controller
 
     public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
-
-        $data = $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-        ]);
-
-        $product = product::findOrFail($id);
-
-        $product->update($data);
+        $product = Product::findOrFail($id);;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->category = $request->category;
+        $product->category_name = $request->category_name;
+        $product->img = $request->img;
+        $product->update();
         return redirect()->route('admin.index')->with('success', 'Product updated successfully');
     }
 
@@ -69,7 +68,6 @@ class AdminController extends Controller
     {
         $product = Product::find($id);
         $product->delete();
-
         return redirect()->route('admin.index')->with('success', 'Product deleted successfully');
     }
 
